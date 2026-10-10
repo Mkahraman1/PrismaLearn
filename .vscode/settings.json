@@ -2,5 +2,6 @@
   "prisma.schemaVersion": 6,
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "editor.unicodeHighlight.invisibleCharacters": false,
-  "tailwindCSS.lint.conflictingClassNames": "ignore"
+  "tailwindCSS.lint.conflictingClassNames": "ignore",
+  "prisma.pinToPrisma6": true
 }
