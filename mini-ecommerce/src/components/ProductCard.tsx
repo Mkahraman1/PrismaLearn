@@ -1,3 +1,5 @@
+import { deleteProduct } from "@/actions/product";
+
 interface ProductCardProps {
   product: {
     id: number;
@@ -22,6 +24,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-xs text-gray-500">
             Stok: {product.stock}
           </span>
+          <form action={deleteProduct.bind(null, product.id)}>
+            <button
+              type="submit"
+              className="text-xs text-red-500 hover:text-red-700 font-medium px-1.5 py-0.5 rounded hover:bg-red-50 transition"
+            >
+              Sil
+            </button>
+          </form>
         </div>
 
         <h3 className="font-bold text-gray-900 text-lg">

@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function createProduct(formData: FormData) {
   const title = formData.get("title") as string;
@@ -21,11 +22,13 @@ export async function createProduct(formData: FormData) {
   });
 
   revalidatePath("/");
+  redirect("/");
 }
 
 
-export async function getProducts() {
+export async function getProducts(categoryId?: number) {
   return await prisma.product.findMany({
+    where: categoryId ? { categoryId } : undefined,
     include: {
       category: true,
     },
@@ -34,6 +37,7 @@ export async function getProducts() {
     },
   });
 }
+
 
 export async function getCategories() {
   let categories = await prisma.category.findMany();
@@ -49,3 +53,11 @@ export async function getCategories() {
   }
   return categories;
 }
+
+export async function deleteProduct(id: number) {
+  await prisma.product.delete({
+    where: { id },
+  });
+  revalidatePath("/");
+}
+

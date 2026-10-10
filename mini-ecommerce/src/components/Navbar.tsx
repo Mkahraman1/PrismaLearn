@@ -14,12 +14,12 @@ export default function Navbar() {
             Vitrin
           </Link>
           <Link
-            href="#yeni-urun"
+            href="/admin"
             className="bg-black text-white text-sm font-medium px-4 py-2 rounded-lg"
           >
             + Yeni Urun Ekle
           </Link>
-          
+
         </div>
       </div>
     </header>
