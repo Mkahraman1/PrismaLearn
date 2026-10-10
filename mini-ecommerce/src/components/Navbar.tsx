@@ -19,6 +19,7 @@ export default function Navbar() {
           >
             + Yeni Urun Ekle
           </Link>
+          
         </div>
       </div>
     </header>
