@@ -6,3 +6,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Property {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  title       String
+  description String
+  price       Float
+  type        String
+  city        String
+  district    String
+  bedrooms    Int
+  bathrooms   Int
+  area        Int
+  imageUrl    String?
+  status      String   @default("AKTIF")
+  isFeatured  Boolean  @default(false)
+}
