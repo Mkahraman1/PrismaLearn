@@ -7,9 +7,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Category {
+  id         Int        @id @default(autoincrement())
+  name       String
+  properties Property[]
+}
+
+model Agent {
+  id         Int        @id @default(autoincrement())
+  name       String
+  phone      String
+  properties Property[]
+}
+
 model Property {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
   title       String
   description String
   price       Float
@@ -19,7 +32,15 @@ model Property {
   bedrooms    Int
   bathrooms   Int
   area        Int
+  floor       String?
   imageUrl    String?
-  status      String   @default("AKTIF")
-  isFeatured  Boolean  @default(false)
+  images      String[]  @default([])
+  status      String    @default("AKTIF")
+  isFeatured  Boolean   @default(false)
+
+  categoryId  Int?
+  category    Category? @relation(fields: [categoryId], references: [id])
+
+  agentId     Int?
+  agent       Agent?    @relation(fields: [agentId], references: [id])
 }
